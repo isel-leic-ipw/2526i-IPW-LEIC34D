@@ -11,8 +11,8 @@ let s2 = new String("Hello");
 // Object literal
 let obj = { x: 3, y: 2 };
 console.log("1:", typeof obj);
-console.log("2.", obj['x']); // or point1.x
-console.log("3.", obj.y); // or point1['y']
+console.log("2.", obj['x']); // or obj.x
+console.log("3.", obj.y); // or obj['y']
 
 for (let i in obj) {
     console.log("4.", i, obj[i]);
