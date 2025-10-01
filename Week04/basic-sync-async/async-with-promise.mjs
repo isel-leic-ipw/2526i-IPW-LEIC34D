@@ -5,7 +5,7 @@ console.log("Asynchronous function with promise");
 
 // Async model with Promise
 // longOperationAsyncWithPromise(VAL)   // Promise<Number>
-//     .then(processResult);            // Promise<String>
+//     .then(processResult);            // Promise<undefined>
 
 // The same as above, but each call is separated.
 // let p = longOperationAsyncWithPromise(VAL);
@@ -22,12 +22,12 @@ longOperationAsyncWithPromise(VAL)
    .catch(processResultError);
 
 // The same as above, but each call is separated.
-//let p1 = longOperationAsyncWithPromise(VAL);
-//let p2 = p1.then(processResult);
-//p2.catch(processResultError);
+// let p1 = longOperationAsyncWithPromise(VAL);
+// let p2 = p1.then(processResult);
+// p2.catch(processResultError);
 
 // Adding "concurrence":
-//let res = longOperation(VAL);
-//processResult(VAL);
+let res = longOperation(VAL);
+processResult(res);
 
 console.log("END");

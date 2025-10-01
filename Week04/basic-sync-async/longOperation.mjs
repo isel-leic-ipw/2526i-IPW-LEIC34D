@@ -15,9 +15,10 @@ export function longOperation(a) {
 // ASYNC WITH CALLBACK
 // (Number, Function) -> undefined
 export function longOperationAsyncWithCallback(a, callback) {    
+    if(!Number(a)) return "'a' must be a number"; // How can we handle the error case???
+
     // Asynchronous operation with setTimeout
     let product = "async with Callback (setTimeout) a=" + a;
-    if(!Number(a)) return;
     // setTimeout sets asynchronously a callback to handler the product after 3 seconds.
     setTimeout(() => callback(product), 3000);
     console.log("Callback was set...");
