@@ -1,4 +1,4 @@
-const URL_CHUCK_NORRIS_JOKE = "https://api.chucknorris.io/jokes/mLUozC5_T3uidSRnZ0nNgQ";
+const URL_CHUCK_NORRIS_JOKE = "https://apichucknorris.io/jokes/mLUozC5_T3uidSRnZ0nNgQ";
 
 
 // const responseP = fetch(URL_CHUCK_NORRIS_JOKE);
@@ -9,13 +9,14 @@ const URL_CHUCK_NORRIS_JOKE = "https://api.chucknorris.io/jokes/mLUozC5_T3uidSRn
 // p.catch((err) => {console.log("Error")});
 
 // fetch(URL_CHUCK_NORRIS_JOKE)        // Promise <Response>
-//     .then(resp => resp.text())      // Promise <String>
+//     .then(resp => {console.log(resp.status); return resp})
+//     .then(resp => {console.log(resp.status); return resp.text()})      // Promise <String>
 //     .then(text => {console.log(text); return text}) // Promise <String>
 //     .then(text => text.length)      // Promise <Number>
 //     .then(len => console.log(len))
-//     .catch((err) => console.log("Error"));
+//     .catch((err) => console.error("Error", err));
 
 fetch(URL_CHUCK_NORRIS_JOKE)        // Promise <Response>
     .then(resp => resp.json())      // Promise <Object>
     .then(obj => console.log(obj.value)) // Promise <undefined>
-    .catch((err) => console.log("Error"));
+    .catch((err) => console.error("Error:", err));
