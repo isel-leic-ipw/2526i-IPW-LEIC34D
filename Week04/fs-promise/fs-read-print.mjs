@@ -6,14 +6,14 @@ console.log("BEGIN");
 
 let line;
 
-// const p = readFile(INPUT_FILE); // Promise<Buffer>
-// console.log(p);
-// const p1 = p.then(processFile); // Promise<undefined>
-// console.log(p1);
-// p.catch(processError);
+const p = readFile(INPUT_FILE); // Promise<Buffer>
+console.log(p);
+const p1 = p.then(processFile); // Promise<undefined>
+console.log(p1);
+p.catch(processError);
 
-readFile(INPUT_FILE)
-    .then(processFile)
+readFile(INPUT_FILE)    // Promise<Buffer>
+    .then(processFile)  // Promise<undefined>
     .catch(processError);
 
 console.log("--->", line);
@@ -30,6 +30,7 @@ function processFile(fileContent) {
 
 function processError(err) {
     console.log("Error handling file!");
-    console.log(err);
+    console.error("Error message:", err.message);
+    console.error("Error code:", err.code);
 }
 

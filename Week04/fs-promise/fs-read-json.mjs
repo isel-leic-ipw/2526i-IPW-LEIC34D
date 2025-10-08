@@ -7,13 +7,14 @@ console.log("BEGIN");
 readFile(INPUT_FILE)                                // Promise<Buffer>
     .then((fileContent) => fileContent.toString())  // Promise<String>
     .then((text) => JSON.parse(text))               // Promise<Object>
-    .then((obj) => console.log(obj))                // Promise<undefined>
+    .then((obj) => console.log(obj.name))                // Promise<undefined>
     .catch(processError);
 
 console.log("END");
 
 function processError(err) {
     console.log("Error handling file!");
-    console.log(err);
+    console.error("Error message:", err.message);
+    console.error("Error code:", err.code);
 }
 

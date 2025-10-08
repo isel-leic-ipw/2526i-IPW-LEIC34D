@@ -39,5 +39,6 @@ function confirmWriteFile() {
 
 function processError(err) {
     console.log("Error handling file");
-    console.log(err);
+    console.error("Error message:", err.message);
+    console.error("Error code:", err.code);
 }
