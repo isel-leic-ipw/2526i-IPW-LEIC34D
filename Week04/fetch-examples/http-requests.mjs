@@ -34,11 +34,11 @@ function promiseResponseToNumber(p1) {
 //     .then(total => console.log(total));
 
 // Second way returning array:
-promiseResponseToNumber(p1) // Promise<Number>
-    .then(len1 => promiseResponseToNumber(p2).then(len2 => [len1, len2])) // Promise<Array>
-    .then(arrLen  => arrLen[0] + arrLen[1])
-    .then(total => console.log(total))
-    .catch(e => console.log("Error", e));
+// promiseResponseToNumber(p1) // Promise<Number>
+//     .then(len1 => promiseResponseToNumber(p2).then(len2 => [len1, len2])) // Promise<Array>
+//     .then(arrLen  => arrLen[0] + arrLen[1])
+//     .then(total => console.log(total))
+//     .catch(e => console.log("Error", e));
 
 // Third way: use a function to combine the numbers (more generic way).
 function combineTwoPromiseNumbers(p1, p2, combiner) {
@@ -50,8 +50,8 @@ function combineTwoPromiseNumbers(p1, p2, combiner) {
         .catch(e => console.log("Error", e));
 }
 
-// combineTwoPromiseNumbers(p1, p2, (a, b) => a + b)
-//     .then(len => console.log(len));
+combineTwoPromiseNumbers(p1, p2, (a, b) => a + b)
+    .then(len => console.log(len));
 
 
 
