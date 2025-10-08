@@ -10,7 +10,7 @@ Promise.any(promiseArray)
     .then(resp => resp.text())
     .then(text => text.length)
     .then(len => console.log(len))
-    .catch(e => console.error("ERROR!", e));
+    .catch(e => console.error("ERROR!", e.message));
 
 // An implementation of Promise.any:
 function promiseAny(arrayPromises){

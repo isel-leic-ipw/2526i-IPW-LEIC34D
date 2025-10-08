@@ -1,29 +1,33 @@
 const urlArray = [
     "https://eloquentjavascript.net/05_higher_order.html",
     "https://eloquentjavascript.net/11_async.html",
-    "https://eloquentjavascript.net/11_async.html"
-    //, "http://not.exist"
+    "https://eloquentjavascript.net/10_modules.html"
+    //, "http://not.exist" // To reproduce an error
 ];
+
+// Objective: present the sum of the sizes of each web-page in urlArray (multiple fetches)
 
 promiseArray = urlArray.map(url => fetch(url));
 
-Promise.all(promiseArray)                       // Promise<Array<Response>>
-    .then(arrResp => {
-        const arrPromiseText = [];
-        for (let resp of arrResp)
-            arrPromiseText.push(resp.text());
-        return Promise.all(arrPromiseText);
-    })                                          // Promise<Array<String>>
-    .then(arrText => {console.log(arrText.map(text => text.length)); return arrText}) // print the size of each text response.
-    .then(arrText => arrText.reduce((t1, t2) => t1 + t2.length, 0)) // Promise<Number>
-    .then(totalLen => console.log(totalLen))    // Promise<undefined>
-    .catch(err => console.error("ERROR!"));
+// First Way:
+// Promise.all(promiseArray)                       // Promise<Array<Response>>
+//     .then(arrResp => {
+//         const arrPromiseText = [];
+//         for (let resp of arrResp)
+//             arrPromiseText.push(resp.text());
+//         return Promise.all(arrPromiseText);
+//     })                                          // Promise<Array<String>>
+//     .then(arrText => {console.log(arrText.map(text => text.length)); return arrText}) // print the size of each text response.
+//     .then(arrText => arrText.reduce((t1, t2) => t1 + t2.length, 0)) // Promise<Number>
+//     .then(totalLen => console.log(totalLen))    // Promise<undefined>
+//     .catch(err => console.error("ERROR!", err.message));
 
-// Promise.all(promiseArray)    // Promise<Array<Promise<Response>>>
-//     .then(arrResp => Promise.all(arrResp.map(resp => resp.text())))  // Promise<Array<String>>
-//     .then(arrText => arrText.reduce((t1, t2) => t1 + t2.length, 0))  // Promise<Number>
-//     .then(totalLen => console.log(totalLen))                         // Promise<undefined>
-//     .catch(e => console.error("ERROR!!!", e));
+// Second Way:
+Promise.all(promiseArray)                                           // Promise<Array<Response>>
+    .then(arrResp => Promise.all(arrResp.map(resp => resp.text()))) // Promise<Array<String>>
+    .then(arrText => arrText.reduce((t1, t2) => t1 + t2.length, 0)) // Promise<Number>
+    .then(totalLen => console.log(totalLen))                        // Promise<undefined>
+    .catch(e => console.error("ERROR!!!", e));
 
 
 // An implementation of Promise.all:
