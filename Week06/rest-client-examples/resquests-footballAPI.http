@@ -3,6 +3,8 @@
 ### Requests to the Football API ###
 ####################################
 
+#################################################################
+# Configuring the KEY as an environment variable for REST Client:
 # KEY is in the setting file .vscode/settings.json:
 #{
 #    "rest-client.environmentVariables": {
@@ -11,6 +13,10 @@
 #        }
 #    }
 #}
+#
+# Then, select the sandbox environment when using Rest Client.
+#################################################################
+
 
 ### Getting Chelsea team information 
 GET http://api.football-data.org/v4/teams/61
