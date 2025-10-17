@@ -1,4 +1,4 @@
-// To use environmental variables through process.env, 
+// To use environment variables through process.env, 
 // run the program in terminal specifying an env-file:
 //
 // node --env-file=.env test-api-football.js
@@ -7,7 +7,7 @@
 //
 // KEY=XXXXXXXXXXXXXXXXXXXXXXX
 //
-// KEY is the env variable name.
+// KEY is the environment variable name.
 // The dot prefix of '.env' indicates that the file is
 // hidden and should be included in .gitignore file.
 
@@ -19,9 +19,14 @@ let requestOptions = {
 // Number => Promise<obj>
 function getObjAPI(){
   return fetch(`http://api.football-data.org/v4/teams`, requestOptions)
+  .then(response => {
+    console.log("Status code:", response.status);
+    console.log(response.headers);
+    return response;
+  })
   .then(response => response.json())
   .catch(error => console.log('error', error));
 }
 
 // Get the 50th first teams from the API Football
-getObjAPI().then(console.log);
+getObjAPI().then(obj => console.log(obj));
