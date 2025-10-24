@@ -31,11 +31,10 @@ Content-Type: application/json
 ### Get all tasks
 GET http://localhost:8000/tasks HTTP/1.1
 
-### Get all tasks with 
+### Get all tasks with query string
 GET http://localhost:8000/tasks?search=HTTP HTTP/1.1
 
 ### Get task 1
-
 GET http://localhost:8000/tasks/1 HTTP/1.1
 
 

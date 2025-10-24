@@ -2,10 +2,11 @@ import express from 'express';
 
 // WARNING:
 // This is a very simple version of Tasks Web Application.
-// - Tasks are in memory;
+// - Without users and authentication;
 // - Without Web API documentation;
 // - There is no module organization;
-// - Without users and authentication;
+// - Without properly error handling;
+// - Tasks are in memory;
 // - Without asynchronous operations.
 
 const PORT = 8000;  // Port number for the tests
@@ -46,22 +47,29 @@ function getTask(req, res){
       res.send(task);
     else
       // Not found id
-      res.status(404).end();
+      res.status(404).send({message: "Task not found"});
 }
 
 function getAllTasks(req, res){
   console.log("Getting all tasks.");
+  console.log("Headers:", req.headers);
+  const queryLen = Object.keys(req.query).length;
+
+  if (queryLen == 0){ // There is no query string
+    //res.set("Content-Type", "application/json");
+    //res.send(JSON.stringify({tasks: TASKS}));
+    res.json({tasks: TASKS}); // The same as above
+    return ;
+  }
   console.log("Query string:", req.query);
-  if ("search" in req.query){
+  if (queryLen == 1 && "search" in req.query){
     const querySearch = req.query["search"];
     const searchTasks = TASKS.filter(task => (task.title.includes(querySearch) || 
       task.description.includes(querySearch)));
     res.json({tasks: searchTasks});
   }
   else {
-    res.set("Content-Type", "application/json");
-    res.send(JSON.stringify({tasks: TASKS}));
-    //res.json({tasks: TASKS}); // The same as above
+    res.status(400).send({message: "Invalid query string!"});
   }
 }
 
@@ -70,7 +78,7 @@ function addTask(req, res){
   console.log(req.body);
   if (! ("title" in req.body) || ! ("description" in req.body)){
     // A bad request
-    res.status(400).end();
+    res.status(400).send({message: "Invalid task"});
     return ;
   }
   let task = {
@@ -84,7 +92,7 @@ function addTask(req, res){
   res.json({
     message: `Task id ${task.id} was added!`,
     code: 201
-  }).end();
+  });
 }
 
 function deleteTask(req, res){
@@ -94,11 +102,11 @@ function deleteTask(req, res){
     let task = TASKS[taskIndex];
     // Usage: array.splice(startIndex, deleteCount)
     TASKS.splice(taskIndex, 1);
-    res.json(task).end();
+    res.json(task);
   }
   else{
     // Not found id
-    res.status(404).end();
+    res.status(404).send({message: "Task not found"});
   }
 }
 
@@ -108,7 +116,7 @@ function updateTask(req, res){
   if (taskIndex != -1){
     if (! ("title" in req.body) || ! ("description" in req.body)){
       // A bad request
-      res.status(400).end();
+      res.status(400).send({message: "Invalid task"});
       return ;
     }
     TASKS[taskIndex].title = req.body.title;
@@ -117,7 +125,7 @@ function updateTask(req, res){
   }
   else{
     // Not found id
-    res.status(404).end();
+    res.status(404).send({message: "Task not found"});
   }
 }
 
