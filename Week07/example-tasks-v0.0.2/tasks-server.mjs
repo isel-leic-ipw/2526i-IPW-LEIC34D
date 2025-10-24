@@ -2,11 +2,12 @@ import express from 'express';
 import * as tasksAPI from './tasks-web-api.mjs';
 
 // WARNING:
-// This is a very simple version of Tasks Web Application.
-// - Tasks are in memory;
-// - Without Web API documentation;
-// - There is no module organization (doing it now!);
+// This is a simple version of Tasks Web Application.
 // - Without users and authentication;
+// - Without Web API documentation;
+// - There is no module organization (in process here);
+// - Without properly error handling;
+// - Tasks are in memory;
 // - Without asynchronous operations.
 
 const PORT = 8000;  // Port number for the tests
