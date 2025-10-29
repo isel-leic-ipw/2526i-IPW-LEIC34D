@@ -251,12 +251,21 @@ components:
         error:
           type: string
           example: "Missing required parameter"
-    InvalidBody:
+    InvalidParameter:
       type: object
       properties:
         code:
           type: integer
           example: 2
+        error:
+          type: string
+          example: "Invalid parameter"
+    InvalidBody:
+      type: object
+      properties:
+        code:
+          type: integer
+          example: 3
         error:
           type: string
           example: "Invalid body content"
@@ -265,7 +274,7 @@ components:
       properties:
         code:
           type: integer
-          example: 3
+          example: 4
         error:
           type: string
           example: "Invalid query string"
@@ -274,7 +283,7 @@ components:
       properties:
         code:
           type: integer
-          example: 4
+          example: 5
         error:
           type: string
           example: "Task with id 1 not found"
@@ -283,7 +292,7 @@ components:
       properties:
         code:
           type: integer
-          example: 5
+          example: 6
         error:
           type: string
           example: "Missing token."
@@ -306,12 +315,18 @@ components:
         application/json:
           schema:
             $ref: "#/components/schemas/InvalidBody"
-    400InvalidParameter:
+    400MissingParameter:
       description: "Missing parameter"
       content:
         application/json:
           schema:
             $ref: "#/components/schemas/MissingParameter"
+    400InvalidParameter:
+      description: "Missing parameter"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/InvalidParameter"
     400InvalidQuery:
       description: "Invalid query string"
       content:
