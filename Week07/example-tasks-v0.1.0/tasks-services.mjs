@@ -1,18 +1,12 @@
 import * as usersServices from './users-services.mjs';
 
-// FUNCTIONS (API Services):
-const NUM_TASKS = 10;
+// FUNCTIONS (API Services + Data):
+// Warning: 
+// - Needs to separate into two modules: tasks-services and tasks-data-mem.
+// - Needs internal error code implementation.
 
 // Initial array for tests:
-const TASKS = new Array(NUM_TASKS)
-                .fill(0).map((v, idx) => { 
-                    return { 
-                        id: idx, 
-                        name: `Task ${idx}`, 
-                        description: `Task ${idx} description`,
-                        userId: (idx % 2 + 1) // user 1 or 2
-                     }
-                });
+const TASKS = [];
 
 let currentId = TASKS.length;
 

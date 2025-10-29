@@ -1,6 +1,9 @@
 import * as tasksServices from "./tasks-services.mjs";
 
 // FUNCTIONS (WEB API):
+// Warning:
+// - Needs to implement reuse of code;
+// - Needs to convert internal error code to HTTP status code.
 
 export function getTask(req, res){
   const token = getToken(req); // TODO: Remove code repetition
