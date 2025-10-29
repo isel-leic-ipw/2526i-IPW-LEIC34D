@@ -8,3 +8,4 @@ The [Wiki](https://github.com/isel-leic-ipw/2526i-IPW-LEIC34D/wiki) contains the
 ## Assignments
 
 1. [1st Assignment.](https://github.com/isel-leic-ipw/2526i-IPW-LEIC31D/wiki/IPW_IP-2526-1-A1).
+2. [2st Assignment, Part 1.](https://github.com/isel-leic-ipw/2526i-IPW-LEIC31D/wiki/IPW_IP-2526-1-A2).
