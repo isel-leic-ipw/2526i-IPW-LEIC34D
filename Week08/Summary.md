@@ -6,3 +6,4 @@
 
 ## Oct-30 (1.5 h):
 - [Designing a Web API: Structure and Web API Modules](https://github.com/isel-leic-ipw/2526i-IPW-LEIC34D/wiki/15-Designing-a-Web-API)
+    - Up to the part presenting the "Get all task" operation in the web API module.
