@@ -17,4 +17,6 @@
 
 ## Nov-20 (1.5 h):
 - [HTML and CSS Overview](https://github.com/isel-leic-ipw/2526i-IPW-LEIC34D/wiki/20-HTML-and-CSS-Overview).
-    - Continuation...
+    - Form Submission;
+    - CSS;
+    - Bootstrap.
