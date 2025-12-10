@@ -41,7 +41,7 @@ passport.deserializeUser((userId, done) => {
 		name: user.name,
 		// token: user.token
 	}
-	console.log("Output (D) - userId:", userId);
+	console.log("Output (D) - userInfo:", userInfo);
 	done(null, userInfo); 
 });
 
